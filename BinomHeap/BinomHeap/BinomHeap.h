@@ -18,15 +18,32 @@ private:
 	friend void linkTrees(Node<Key_type_0>* btree_1, Node<Key_type_0>* btree_2);//connects first to second
 	template<typename Key_type_0>
 	friend void mergeHeaps(BinomHeap<Key_type_0>* temp_heap,BinomHeap<Key_type_0>* bheap_1,BinomHeap<Key_type_0>* bheap_2);
-	BinomHeap* rotate_children();
+	BinomHeap* rotateChildren();
+	void deleteTree(Node<Key_type>* current) {
+		if(current == nullptr)
+			return;
+		Node<Key_type>* next = current->sibling_;
+		while(next != nullptr) {
+			deleteTree(current->child_);
+			delete current;
+			current = next;
+			next = current->sibling_;
+		}
+		deleteTree(current->child_);
+		delete current;
+		current = nullptr;
+	}
 public:
 	BinomHeap():head_(nullptr), size_(0){};
-	~BinomHeap(){};
+	~BinomHeap() {
+		deleteTree(head_);
+	};
 	int size() { return size_;};
 	const Key_type& top();
-	void push(const Key_type& in);
+	Node<Key_type>* push(const Key_type& in);
 	void pop();
-	void decrease_key(const Key_type& old_key, const Key_type& new_key);
+	void decreaseKey(Node<Key_type>* node, const Key_type& new_key);
+	void deleteKey(Node<Key_type>* node);
 };
 
 #include"BinomHeap.hpp"

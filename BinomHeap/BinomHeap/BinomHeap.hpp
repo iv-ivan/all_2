@@ -57,12 +57,14 @@ Node<Key_type_0>* unionHeaps(BinomHeap<Key_type_0>* bheap_1, BinomHeap<Key_type_
 }
 
 template<typename Key_type>
-void BinomHeap<Key_type>::push(const Key_type& in) {
+Node<Key_type>* BinomHeap<Key_type>::push(const Key_type& in) {
 	BinomHeap<Key_type>* temp_heap = new BinomHeap<Key_type>;
 	temp_heap->head_ = new Node<Key_type>;
+	Node<Key_type>* temp_ptr = temp_heap->head_;
 	*(temp_heap->head_) = Node<Key_type>(in);
 	this->head_ = unionHeaps<Key_type>(this, temp_heap);
 	++size_;
+	return temp_ptr;
 }
 
 template<typename Key_type_0>
@@ -145,12 +147,12 @@ void BinomHeap<Key_type>::pop() {
 		prev_ptr_min->sibling_ = ptr_min->sibling_;
 	temp_heap->head_ = ptr_min;
 	ptr_min->sibling_ = nullptr;
-	head_ = unionHeaps(this, temp_heap->rotate_children());
+	head_ = unionHeaps(this, temp_heap->rotateChildren());
 	--size_;
 }
 
 template<typename Key_type>
-BinomHeap<Key_type>* BinomHeap<Key_type>::rotate_children() {
+BinomHeap<Key_type>* BinomHeap<Key_type>::rotateChildren() {
 	if(head_->degree_ == 0) {
 		delete head_;
 		head_ = nullptr;
@@ -171,4 +173,33 @@ BinomHeap<Key_type>* BinomHeap<Key_type>::rotate_children() {
 	delete head_;
 	head_ = current_child;
 	return this;
+}
+
+template<typename Key_type>
+void BinomHeap<Key_type>::decreaseKey(Node<Key_type>* node, const Key_type& new_key) {
+	if(new_key > node->key_)
+		return;
+	node->key_ = new_key;
+	Node<Key_type>* temp_node = node;
+	Node<Key_type>* temp_node_parent = node->parent_;
+	while(temp_node_parent != nullptr && temp_node->key_ < temp_node_parent->key_) {
+		Node<Key_type>* top_node = temp_node_parent->parent_;
+		Node<Key_type>* parent_sibling = temp_node_parent->sibling_;
+		top_node->child_ = temp_node;
+		temp_node_parent->parent_ = temp_node;
+		temp_node_parent->sibling_ = temp_node->sibling_;
+		temp_node_parent->child_ = temp_node->child_;
+		temp_node->parent_ = top_node;
+		temp_node->child_ = temp_node_parent;
+		temp_node->sibling_ = parent_sibling;
+
+		temp_node = temp_node_parent;
+		temp_node_parent = temp_node->parent_;
+	}
+}
+
+template<typename Key_type>
+void BinomHeap<Key_type>::deleteKey(Node<Key_type>* node) {
+	decreaseKey(node, std::numeric_limits<int>:min);
+	pop();
 }
