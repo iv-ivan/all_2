@@ -1,6 +1,8 @@
+#ifndef _TARJAN
+#define _TARJAN
 #include<list>
 #include<map>
-
+#include"graph.h"
 void connectLists(list<list<int> >& list_1,list<list<int> >& list_2) {
 	for(auto iterator_list = list_2.begin(); iterator_list != list_2.end(); ++iterator_list)
 		list_1.push_back(*iterator_list);
@@ -96,7 +98,7 @@ list<list<int> > tarjanDFS(Graph<type_of_vertex_value, type_of_edge_weight>& cur
 			}
 		}
 		if(low_index.returnIndex(current_vertex) == index.find(current_vertex)->second) {
-			components.push_back(make_list(stackALGO, current_vertex));
+			components.push_back(makeList(stackALGO, current_vertex));
 		}
 		if(current_vertex == No_of_vertex_begin) {
 			break;
@@ -108,7 +110,7 @@ list<list<int> > tarjanDFS(Graph<type_of_vertex_value, type_of_edge_weight>& cur
 	return components;
 }
 
-list<int> make_list(list<int>& stackALGO, int No_of_vertex) {
+list<int> makeList(list<int>& stackALGO, int No_of_vertex) {
 	list<int> temp_list;
 	int count = 1;
 	auto iterator_list = --(stackALGO.end());
@@ -123,3 +125,4 @@ list<int> make_list(list<int>& stackALGO, int No_of_vertex) {
 	}
 	return temp_list;
 }
+#endif

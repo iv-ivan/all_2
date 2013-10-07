@@ -12,12 +12,7 @@ template<typename Key_type> class BinomHeap {
 private:
 	Node<Key_type>* head_;
 	int size_;
-	template<typename Key_type_0>
-	friend Node<Key_type_0>* unionHeaps(BinomHeap<Key_type_0>* bheap_1, BinomHeap<Key_type_0>* bheap_2);
-	template<typename Key_type_0>
-	friend void linkTrees(Node<Key_type_0>* btree_1, Node<Key_type_0>* btree_2);//connects first to second
-	template<typename Key_type_0>
-	friend void mergeHeaps(BinomHeap<Key_type_0>* temp_heap,BinomHeap<Key_type_0>* bheap_1,BinomHeap<Key_type_0>* bheap_2);
+	void mergeHeaps(BinomHeap<Key_type>* bheap_1,BinomHeap<Key_type>* bheap_2);
 	BinomHeap* rotateChildren();
 	void deleteTree(Node<Key_type>* current) {
 		if(current == nullptr)
@@ -34,6 +29,7 @@ private:
 		current = nullptr;
 	}
 public:
+	void unionHeaps(BinomHeap<Key_type>* bheap);
 	BinomHeap():head_(nullptr), size_(0){};
 	~BinomHeap() {
 		deleteTree(head_);

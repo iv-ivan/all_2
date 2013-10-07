@@ -1,2 +1,9 @@
 ﻿  main.cpp
-  Graph_++11.vcxproj -> C:\Users\Иван\documents\visual studio 2012\Projects\Graph_++11\Debug\Graph_++11.exe
+c:\users\иван\documents\visual studio 2012\projects\graph_++11\graph_++11\prim.hpp(75): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\иван\documents\visual studio 2012\projects\graph_++11\graph_++11\main.cpp(20) : see reference to function template instantiation 'Graph<type_of_vertex_value,type_of_edge_weight> Prim<int,int>(Graph<type_of_vertex_value,type_of_edge_weight>)' being compiled
+          with
+          [
+              type_of_vertex_value=int,
+              type_of_edge_weight=int
+          ]
+  Graph_++11.vcxproj -> C:\Users\Иван\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.exe

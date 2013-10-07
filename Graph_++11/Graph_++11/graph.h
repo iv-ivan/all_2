@@ -184,6 +184,5 @@ public:
 		return new_iterator;
 	}
 };
-
 #include"graph.hpp"
 #endif

@@ -1,5 +1,8 @@
+#ifndef _GRAPH_HPP
+#define _GRAPH_HPP
 #include<iostream>
 using namespace std;
+#include"graph.h"
 template<typename type_of_vertex_value, typename type_of_edge_weight> 
 Vertex<type_of_vertex_value, type_of_edge_weight>::Vertex(): No_of_vertex(0), color(0), value(0), out_edges(), in_edges() {//конструктор по умолчанию
 }
@@ -358,3 +361,4 @@ void Graph<type_of_vertex_value, type_of_edge_weight>::setEdgeWeight(int from, i
 		if(iterator_edge->to == from)
 			iterator_edge->weight = new_weight;
 }
+#endif
