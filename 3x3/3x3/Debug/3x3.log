@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\иван\documents\visual studio 2012\projects\3x3\3x3\main.cpp(47): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+c:\users\иван\documents\visual studio 2012\projects\3x3\3x3\main.cpp(192): warning C4018: '<' : signed/unsigned mismatch
+  3x3.vcxproj -> c:\users\иван\documents\visual studio 2012\Projects\3x3\Debug\3x3.exe
