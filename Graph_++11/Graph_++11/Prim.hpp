@@ -49,9 +49,38 @@ struct weight_vertex {
 	}
 };
 
+//template<typename type_of_vertex_value, typename type_of_edge_weight>
+//Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value, type_of_edge_weight> cur_graph) {
+//	Prim_ns::setColorToWhite(cur_graph);
+//	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph;
+//
+//	auto list_vertices = cur_graph.allVertices();
+//	if(list_vertices.size() == 0)
+//		return nullptr;
+//	for(auto i = list_vertices.begin(); i != list_vertices.end(); ++i)
+//		ret_graph.addVertex(i->No_of_vertex, i->value);
+//
+//	int v0 = list_vertices.begin()->No_of_vertex;
+//	BinomHeap<weight_vertex<type_of_edge_weight>> cut;
+//	cur_graph.setVertexColor(v0, 1);
+//	int size_of_tree = 1;
+//	for(auto it = list_vertices.begin()->out_edges.begin(); it != list_vertices.begin()->out_edges.end(); ++it) {
+//		weight_vertex<type_of_edge_weight> temp;
+//		temp.v_to = it->to;
+//		temp.v_from = it->from;
+//		temp.w = it->weight;
+//		cut.push(temp);
+//	}
+//
+//	while(size_of_tree < list_vertices.size()) {
+//		connectToTree(cur_graph, cut, ret_graph);
+//		++size_of_tree;
+//	}
+//	return ret_graph;
+//}
+
 template<typename type_of_vertex_value, typename type_of_edge_weight>
-Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value, type_of_edge_weight> cur_graph) {
-	Prim_ns::setColorToWhite(cur_graph);
+Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph) {
 	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph;
 
 	auto list_vertices = cur_graph.allVertices();
@@ -60,9 +89,10 @@ Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value
 	for(auto i = list_vertices.begin(); i != list_vertices.end(); ++i)
 		ret_graph.addVertex(i->No_of_vertex, i->value);
 
+	Prim_ns::setColorToWhite(ret_graph);
 	int v0 = list_vertices.begin()->No_of_vertex;
 	BinomHeap<weight_vertex<type_of_edge_weight>> cut;
-	cur_graph.setVertexColor(v0, 1);
+	ret_graph.setVertexColor(v0, 1);
 	int size_of_tree = 1;
 	for(auto it = list_vertices.begin()->out_edges.begin(); it != list_vertices.begin()->out_edges.end(); ++it) {
 		weight_vertex<type_of_edge_weight> temp;
@@ -76,6 +106,7 @@ Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value
 		connectToTree(cur_graph, cut, ret_graph);
 		++size_of_tree;
 	}
+	Prim_ns::setColorToWhite(ret_graph);
 	return ret_graph;
 }
 
@@ -85,14 +116,14 @@ void connectToTree(Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph, 
 	do {
 		temp = cut.top();
 		cut.pop();
-	} while(cur_graph.getVertexColor(temp.v_to) == 1);
-	cur_graph.setVertexColor(temp.v_to, 1);
+	} while(ret_graph.getVertexColor(temp.v_to) == 1);
+	ret_graph.setVertexColor(temp.v_to, 1);
 	ret_graph.addEdge(temp.v_from, temp.v_to, temp.w);
 	ret_graph.addEdge(temp.v_to, temp.v_from, temp.w);
 
 	auto list_edges = cur_graph.getListOutEdges(temp.v_to);
 	for(auto it = list_edges.begin(); it != list_edges.end(); ++it)
-		if(cur_graph.getVertexColor(it->to) == 0) {
+		if(ret_graph.getVertexColor(it->to) == 0) {
 			weight_vertex<type_of_edge_weight> temp;
 			temp.w = it->weight;
 			temp.v_from = it->from;

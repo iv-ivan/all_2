@@ -1,3 +1,8 @@
-﻿  main.cpp
+﻿  CurState.cpp
+c:\users\иван\documents\visual studio 2012\projects\pyathashki\pyathashki\curstate.cpp(27): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+  Generating Code...
+  Compiling...
+  main.cpp
 c:\users\иван\documents\visual studio 2012\projects\pyathashki\pyathashki\main.cpp(7): warning C4018: '<' : signed/unsigned mismatch
+  Generating Code...
   Pyathashki.vcxproj -> C:\Users\Иван\documents\visual studio 2012\Projects\Pyathashki\Debug\Pyathashki.exe

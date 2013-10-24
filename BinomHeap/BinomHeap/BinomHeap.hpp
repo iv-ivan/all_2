@@ -1,7 +1,9 @@
 #ifndef _BINOMHEAP_HPP
 #define _BINOMHEAP_HPP
 template<typename Key_type>
-const Key_type& BinomHeap<Key_type>::top() {
+const Key_type BinomHeap<Key_type>::top() {
+	if(head_ == nullptr)
+		return 0;
 	Node<Key_type>* current_node = head_;
 	Node<Key_type>* ptr_min = current_node;
 	Key_type min = current_node->key_;

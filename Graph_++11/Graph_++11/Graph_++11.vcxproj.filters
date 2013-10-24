@@ -27,6 +27,9 @@
     <ClInclude Include="Prim.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Kruskal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

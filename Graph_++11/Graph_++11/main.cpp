@@ -3,6 +3,7 @@
 #include<fstream>
 #include<iostream>
 #include"Prim.hpp"
+#include"Kruskal.hpp"
 using namespace std;
 
 int main() 

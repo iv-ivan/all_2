@@ -1,3 +1,5 @@
+#ifndef _BINOMHEAP
+#define _BINOMHEAP
 template<typename Key_type> struct Node {
 	Node* parent_;
 	Key_type key_;
@@ -35,7 +37,7 @@ public:
 		deleteTree(head_);
 	};
 	int size() { return size_;};
-	const Key_type& top();
+	const Key_type top();
 	Node<Key_type>* push(const Key_type& in);
 	void pop();
 	void decreaseKey(Node<Key_type>* node, const Key_type& new_key);
@@ -43,3 +45,4 @@ public:
 };
 
 #include"BinomHeap.hpp"
+#endif

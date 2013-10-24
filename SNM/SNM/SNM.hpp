@@ -3,56 +3,43 @@
 #include"SNM.h"
 using namespace std;
 template<typename T>
-Node<T>* SetsSystem<T>::addSet(T x, int id) {
-	Node<T>* temp_node = new Node<T>;
-	temp_node->x = x;
-	temp_node->parent = nullptr;
-
+SNM::Node<T>* SNM::SetsSystem<T>::addSet(T x, int id) {
 	ListElement<T>* temp_element = new ListElement<T>;
-	temp_element->ptr = temp_node;
+	temp_element->parent = nullptr;
+	temp_element->x = x;
 	temp_element->size_tree = 1;
 	temp_element->n = id;
 
-	roots_.push_back(*temp_element);
-	temp_element->ptr = nullptr;
-	delete temp_element;
-	return temp_node;
+	roots_.insert(make_pair(id, temp_element));
+	del_list_.push_back(temp_element);
+	//temp_element->ptr = nullptr;
+	//delete temp_element;
+	return temp_element;
 }
 
 template<typename T>
-void SetsSystem<T>::connectAtoB(int a, int b) {
-	auto it_a = roots_.begin();
-	auto it_b = roots_.begin();
-	while(1) {
-		if(it_a->n == a)
-			break;
-		++it_a;
-	}
-	while(1) {
-		if(it_b->n == b)
-			break;
-		++it_b;
-	}
-	if(it_a->size_tree > it_b->size_tree) {
-		auto temp_ptr = *it_b;
-		it_b->ptr = nullptr;
-		roots_.erase(it_b);
+void SNM::SetsSystem<T>::unionSets(typename std::unordered_map<int,ListElement<T>* >::iterator it_a, typename std::unordered_map<int,ListElement<T>* >::iterator it_b) {
+	auto temp_ptr = (it_b->second);
+	it_b->second = nullptr;
+	roots_.erase(it_b);
 
-		temp_ptr.ptr->parent = it_a->ptr;
-		it_a->n = temp_ptr.n;
-		it_a->size_tree += temp_ptr.size_tree;
-	} else {
-		auto temp_ptr = *it_a;
-		it_a->ptr = nullptr;
-		roots_.erase(it_a);
-
-		temp_ptr.ptr->parent = it_b->ptr;
-		it_b->size_tree += temp_ptr.size_tree;
-	}
+	temp_ptr->parent = it_a->second;
+	it_a->second->size_tree += temp_ptr->size_tree;
 }
 
 template<typename T>
-Node<T>* SetsSystem<T>::getNode(Node<T>* x) {
+void SNM::SetsSystem<T>::connectAtoB(int a, int b) {
+	auto it_a = roots_.find(a);
+	auto it_b = roots_.find(b);
+	if(it_a->second->size_tree > it_b->second->size_tree) {
+		it_a->second->setN(it_b->second->getN());
+		unionSets(it_a,it_b);
+	} else
+		unionSets(it_b,it_a);
+}
+
+template<typename T>
+SNM::Node<T>* SNM::SetsSystem<T>::getNode(Node<T>* x) {
 	if(x->parent == nullptr)
 		return x;
 	else
@@ -60,12 +47,10 @@ Node<T>* SetsSystem<T>::getNode(Node<T>* x) {
 }
 
 template<typename T>
-int SetsSystem<T>::find(Node<T>* x) {
+int SNM::SetsSystem<T>::find(Node<T>* x) {
 	Node<T>* top = getNode(x);
-	for(auto i = roots_.begin(); i != roots_.end(); ++i)
-		if(i->ptr == top) {
-			x->parent = top;
-			return i->n;
-		}
+	if(top != x)
+		x->parent = top;
+	return top->getN();
 }
 #endif

@@ -7,15 +7,7 @@ const Key_type FibonHeap<Key_type>::top() {
 		return 0;
 	return min_->key_;
 }
-/*
-template<typename Key_type>
-void linkTrees(Node<Key_type>* btree_1, Node<Key_type>* btree_2) {
-	btree_1->parent_ = btree_2;
-	btree_1->sibling_ = btree_2->child_;
-	btree_2->child_ = btree_1;
-	++(btree_2->degree_);
-}
-*/
+
 template<typename Key_type>
 void FibonHeap<Key_type>::unionHeaps(FibonHeap<Key_type>* fheap) {
 	if(fheap->min_ == nullptr) {
@@ -64,7 +56,7 @@ Node<Key_type>* FibonHeap<Key_type>::push(const Key_type& in) {
 
 template<typename Key_type>
 void FibonHeap<Key_type>::consolidate() {
-	std::vector<Node<Key_type>*> arr_nodes(size_, nullptr);
+	std::vector<Node<Key_type>*> arr_nodes(size_, nullptr);//size_root
 	Node<Key_type>* cur_node = min_;
 	int cur_size = size_root_;
 	for(int i = 0; i < cur_size; ++i) {
@@ -166,7 +158,7 @@ void FibonHeap<Key_type>::pop() {
 
 template<typename Key_type>
 void FibonHeap<Key_type>::decreaseKey(Node<Key_type>* node, const Key_type& new_key) {
-	if(new_key > node->key_)
+	if(new_key >= node->key_)
 		return;
 	node->key_ = new_key;
 	Node<Key_type>* temp_node = node;
@@ -211,7 +203,7 @@ void FibonHeap<Key_type>::cascadingCut(Node<Key_type>* node) {
 
 template<typename Key_type>
 void FibonHeap<Key_type>::deleteKey(Node<Key_type>* node) {
-	decreaseKey(node, Key_type(std::numeric_limits<int>:min));
+	decreaseKey(node, Key_type(std::numeric_limits<int>:min));//numeric_limits<Key_type>
 	pop();
 }
 #endif

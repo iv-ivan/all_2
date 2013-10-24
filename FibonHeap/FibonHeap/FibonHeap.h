@@ -52,5 +52,4 @@ public:
 	void decreaseKey(Node<Key_type>* node, const Key_type& new_key);
 	void deleteKey(Node<Key_type>* node);
 };
-
 #include"FibonHeap.hpp"
