@@ -1,9 +1,14 @@
-﻿  main.cpp
-c:\users\иван\documents\visual studio 2012\projects\graph_++11\graph_++11\prim.hpp(105): warning C4018: '<' : signed/unsigned mismatch
-          c:\users\иван\documents\visual studio 2012\projects\graph_++11\graph_++11\main.cpp(21) : see reference to function template instantiation 'Graph<type_of_vertex_value,type_of_edge_weight> Prim<int,int>(Graph<type_of_vertex_value,type_of_edge_weight> &)' being compiled
-          with
-          [
-              type_of_vertex_value=int,
-              type_of_edge_weight=int
-          ]
-  Graph_++11.vcxproj -> C:\Users\Иван\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.exe
+﻿Build started 28.10.2013 17:27:18.
+     1>Project "C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Graph_++11\Graph_++11.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\ivan290895\documents\visual studio 2012\projects\graph_++11\graph_++11\graph.hpp(356): warning C4715: 'Graph<int,std::pair<int,int> >::getEdgeWeight' : not all control paths return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.lib" /MACHINE:X86 Debug\main.obj
+         Graph_++11.vcxproj -> C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Debug\Graph_++11.exe
+     1>Done Building Project "C:\Users\ivan290895\Documents\Visual Studio 2012\Projects\Graph_++11\Graph_++11\Graph_++11.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.57

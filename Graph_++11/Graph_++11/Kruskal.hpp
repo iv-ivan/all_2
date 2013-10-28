@@ -14,8 +14,8 @@ bool comparator(Edge<type_of_edge_weight>& e_1, Edge<type_of_edge_weight>& e_2) 
 }
 
 template<typename type_of_vertex_value, typename type_of_edge_weight>
-Graph<type_of_vertex_value, type_of_edge_weight> Kruskal(Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph) {
-	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph;
+Graph<type_of_vertex_value, type_of_edge_weight> Kruskal(const Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph) {
+	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph(0);
 
 	auto list_vertices = cur_graph.allVertices();
 	SNM::SetsSystem<int> trees;
@@ -31,20 +31,19 @@ Graph<type_of_vertex_value, type_of_edge_weight> Kruskal(Graph<type_of_vertex_va
 	vector<Edge<type_of_edge_weight> > vector_edges(list_edges.begin(), list_edges.end());
 	std::sort(vector_edges.begin(), vector_edges.end(), comparator<type_of_edge_weight>);
 
-	int i0 = 0;
-	while(trees.getNumOfSets() > 1) {
-		for(int i = i0; i < vector_edges.size(); ++i) {
+	//int i0 = 0;
+	//while(trees.getNumOfSets() > 1) {
+		for(int i = 0; i < vector_edges.size(); ++i) {
 			int out = trees.find(map_ptrs[vector_edges[i].from]);
 			int in = trees.find(map_ptrs[vector_edges[i].to]);
 			if(in != out) {
 				ret_graph.addEdge(vector_edges[i].from, vector_edges[i].to, vector_edges[i].weight);
-				ret_graph.addEdge(vector_edges[i].to, vector_edges[i].from, vector_edges[i].weight);
-				i0 = i+1;
+				//ret_graph.addEdge(vector_edges[i].to, vector_edges[i].from, vector_edges[i].weight);
+				//i0 = i+1;
 				trees.connectAtoB(out,in);
-				break;
 			}
 		}
-	}
+	//}
 	return ret_graph;
 }	
 #endif

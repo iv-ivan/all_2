@@ -81,6 +81,7 @@
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph.hpp" />
     <ClInclude Include="Kruskal.hpp" />
+    <ClInclude Include="Predpotok.hpp" />
     <ClInclude Include="Prim.hpp" />
     <ClInclude Include="tarjan.hpp" />
   </ItemGroup>

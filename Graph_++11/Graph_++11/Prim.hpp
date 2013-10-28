@@ -81,7 +81,7 @@ struct weight_vertex {
 
 template<typename type_of_vertex_value, typename type_of_edge_weight>
 Graph<type_of_vertex_value, type_of_edge_weight> Prim(Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph) {
-	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph;
+	Graph<type_of_vertex_value, type_of_edge_weight> ret_graph(0);
 
 	auto list_vertices = cur_graph.allVertices();
 	if(list_vertices.size() == 0)
@@ -119,7 +119,7 @@ void connectToTree(Graph<type_of_vertex_value, type_of_edge_weight>& cur_graph, 
 	} while(ret_graph.getVertexColor(temp.v_to) == 1);
 	ret_graph.setVertexColor(temp.v_to, 1);
 	ret_graph.addEdge(temp.v_from, temp.v_to, temp.w);
-	ret_graph.addEdge(temp.v_to, temp.v_from, temp.w);
+	//ret_graph.addEdge(temp.v_to, temp.v_from, temp.w);
 
 	auto list_edges = cur_graph.getListOutEdges(temp.v_to);
 	for(auto it = list_edges.begin(); it != list_edges.end(); ++it)

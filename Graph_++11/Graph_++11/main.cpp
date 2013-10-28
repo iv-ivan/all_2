@@ -3,13 +3,13 @@
 #include<fstream>
 #include<iostream>
 #include"Prim.hpp"
-#include"Kruskal.hpp"
+#include"Predpotok.hpp"
 using namespace std;
 
 int main() 
 {
 	ifstream in("input.txt");
-	Graph<int,int> my_graph(0);
+	Graph<int,int> my_graph(1);
 	in>>my_graph;
 	//auto a = tarjan(my_graph);
 	//square(2);
@@ -18,6 +18,6 @@ int main()
 	//Graph<int,int> my_graph_2(my_graph);
 	//my_graph_2.deleteEdge(1,2);
 	//cout << a;//my_graph;*/
-	cout << Prim(my_graph);
+	cout << Predpotok(my_graph,1,6);
 	return 0;
 }

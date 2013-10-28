@@ -12,7 +12,7 @@ Vertex<type_of_vertex_value, type_of_edge_weight>::Vertex(int No): No_of_vertex(
 }
 
 template<typename type_of_edge_weight> 
-Edge<type_of_edge_weight>::Edge(): from(0), to(0), color(0), weight(0) {//конструктор по умолчанию
+Edge<type_of_edge_weight>::Edge(): from(0), to(0), color(0), weight() {//конструктор по умолчанию
 }
 
 template<typename type_of_edge_weight> 
@@ -78,6 +78,12 @@ istream& operator >>(istream& in, Graph<type_of_vertex_value, type_of_edge_weigh
 		current_graph.addEdge(from, to, wei);
 	}
 	return in;
+}
+
+template<typename T1, typename T2>
+ostream& operator <<(ostream& out, const pair<T1, T2>& x) {
+	out << x.second;
+	return out;
 }
 
 template<typename type_of_vertex_value, typename type_of_edge_weight>
@@ -346,7 +352,7 @@ type_of_edge_weight Graph<type_of_vertex_value, type_of_edge_weight>::getEdgeWei
 	for(auto iterator_edge = iterator_vertex->second->out_edges.begin(); iterator_edge != iterator_vertex->second->out_edges.end(); ++iterator_edge)
 		if(iterator_edge->to == to)
 			return iterator_edge->weight;
-	return 10000000;
+	//return 10000;
 }
 
 template<typename type_of_vertex_value, typename type_of_edge_weight>
@@ -357,7 +363,7 @@ void Graph<type_of_vertex_value, type_of_edge_weight>::setEdgeWeight(int from, i
 			iterator_edge->weight = new_weight;
 
 	iterator_vertex = table_.find(to);
-	for(auto iterator_edge = iterator_vertex->second->out_edges.begin(); iterator_edge != iterator_vertex->second->out_edges.end(); ++iterator_edge)
+	for(auto iterator_edge = iterator_vertex->second->in_edges.begin(); iterator_edge != iterator_vertex->second->in_edges.end(); ++iterator_edge)
 		if(iterator_edge->to == from)
 			iterator_edge->weight = new_weight;
 }
