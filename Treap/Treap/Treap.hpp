@@ -131,11 +131,73 @@ void Treap<type_key, type_prior>::erase(const type_key& x) {
 		else
 			root_ = merge_res;
 }
-//		void unionWith(Treap&);
+
+template<typename type_key, typename type_prior>
+void Treap<type_key, type_prior>::unionWith(Treap& b) {
+	root_ = unionTreaps(this->root_, b.root_);
+	b.root_ = nullptr;
+}
+
+template<typename type_key, typename type_prior>
+Node<type_key, type_prior>* unionTreaps(Node<type_key, type_prior>* a,Node<type_key, type_prior>* b) {
+	if(a == nullptr)
+		return b;
+	if(b == nullptr)
+		return a;
+	if(a->getPrior() > b->getPrior())
+		return unionTreaps(b,a);
+	std::pair<Node<type_key, type_prior>*,Node<type_key, type_prior>*> LR = Split(b,a->getKey());
+	a->setL(unionTreaps(a->getL(), LR.first));
+	if(a->getL() != nullptr)
+		a->getL()->setParent(a);
+	a->setR(unionTreaps(a->getR(), LR.second));
+	if(a->getR() != nullptr)
+		a->getR()->setParent(a);
+	return a;
+}
+
 template<typename type_key, typename type_prior>
 Treap<type_key, type_prior>::Treap():root_() {
 }
-//		void orderBuild(const std::vector<std::pair<type_key, type_prior> >&, const int& index_start, const int& ind_end);
+
+template<typename type_key, typename type_prior>
+void Treap<type_key, type_prior>::orderBuild(const std::vector<std::pair<type_key, type_prior> >& a, const int& ind_start, const int& ind_end) {
+	Node<type_key,type_prior>* cur_node = root_;
+	Node<type_key,type_prior>** cur_node_ptr = new Node<type_key,type_prior>*;
+	*cur_node_ptr = cur_node;
+	for(int i = ind_start; i <= ind_end; ++i)
+		orderInsert(cur_node_ptr,a[i].first,a[i].second);
+	delete cur_node_ptr;
+	return;
+}
+//!!!!!!!!!!!!
+template<typename type_key, typename type_prior>
+void Treap<type_key, type_prior>::orderInsert(Node<type_key,type_prior>** cur_node_ptr, const type_key& key, const type_prior& prior) {
+	if(*cur_node_ptr == nullptr) {
+		Node<type_key,type_prior>* new_node = new Node<type_key,type_prior>(key, prior);
+		if(root_ != nullptr)
+			root_->setParent(new_node);
+		new_node->setL(root_);
+		root_ = new_node;
+		*cur_node_ptr = new_node;
+		return;
+	}
+	if((*cur_node_ptr)->getPrior() < prior) {
+		Node<type_key,type_prior>* new_node = new Node<type_key,type_prior>(key, prior);
+		if((*cur_node_ptr)->getR() != nullptr) {
+			new_node->setL((*cur_node_ptr)->getR());
+			(*cur_node_ptr)->getR()->setParent(new_node);
+		}
+		(*cur_node_ptr)->setR(new_node);
+		new_node->setParent(*cur_node_ptr);
+		*cur_node_ptr = new_node;
+		return;
+	} else {
+		*cur_node_ptr = (*cur_node_ptr)->getParent();
+		orderInsert(cur_node_ptr, key, prior);
+	}
+}
+
 template<typename type_key, typename type_prior>
 Treap<type_key, type_prior>::~Treap() {
 	deleteNode(root_);
@@ -251,6 +313,10 @@ void addNode(std::vector<std::vector<int> >& a, Node<type_key, type_prior>* tr) 
 		return;
 	else
 		a[tr->getPrior()][tr->getKey()] = tr->getKey();
+	if(tr->getL() != nullptr) 
+		std::cout << tr->getKey() << " " << tr->getL()->getKey() << std::endl;
 	addNode(a, tr->getL());
+	if(tr->getR() != nullptr) 
+		std::cout << tr->getKey() << " " << tr->getR()->getKey() << std::endl;
 	addNode(a, tr->getR());
 }

@@ -1,3 +1,2 @@
 ﻿  main.cpp
-c:\users\ivan290895\documents\visual studio 2012\projects\treap\treap\treap.hpp(93): warning C4715: 'my_treap::Treap<int,int>::searchPlace' : not all control paths return a value
   Treap.vcxproj -> C:\Users\ivan290895\documents\visual studio 2012\Projects\Treap\Debug\Treap.exe
