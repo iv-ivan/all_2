@@ -4,6 +4,8 @@
 #define _TREAP_H
 #include<vector>
 #include<iostream>
+template<typename type_val>
+class RMQ;
 namespace my_treap {
 	template<typename type_key, typename type_prior>
 	class Treap;
@@ -23,6 +25,8 @@ namespace my_treap {
 		Node(const Node&);
 		~Node();
 	private:
+		template<typename type_val>
+		friend class RMQ;
 		Node* parent_;
 		Node* l_child_;
 		Node* r_child_;
@@ -40,6 +44,8 @@ namespace my_treap {
 		void orderBuild(const std::vector<std::pair<type_key, type_prior> >&, const int& index_start, const int& ind_end);
 		~Treap();
 	private:
+		template<typename type_val>
+		friend class RMQ;
 		Node<type_key, type_prior>* deepSearch(Node<type_key, type_prior>*, const type_key&) const;
 		template<typename type_key, typename type_prior>
 		friend std::ostream& operator << (std::ostream&, Treap<type_key, type_prior>&);

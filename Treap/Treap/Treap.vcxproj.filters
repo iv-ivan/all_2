@@ -21,6 +21,12 @@
     <ClInclude Include="Treap.hpp">
       <Filter>Resource Files</Filter>
     </ClInclude>
+    <ClInclude Include="RMQ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RMQ.hpp">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

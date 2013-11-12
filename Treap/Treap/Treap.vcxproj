@@ -78,6 +78,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="RMQ.h" />
+    <ClInclude Include="RMQ.hpp" />
     <ClInclude Include="Treap.h" />
     <ClInclude Include="Treap.hpp" />
   </ItemGroup>

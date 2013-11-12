@@ -1,8 +1,9 @@
-#include"Treap.h"
 #include<vector>
 #include<cstdlib>
+#include"Treap.h"
+#include"RMQ.h"
 int main() {
-	my_treap::Treap<int,int> a;
+	//my_treap::Treap<int,int> a;
 	/*my_treap::Treap<int, int> b;
 	b.insert(1,1);
 	b.insert(2,5);
@@ -18,10 +19,10 @@ int main() {
 	std::cout << std::endl << b << std::endl;
 	a.unionWith(b);
 	std::cout << a;*/
-	std::vector<std::pair<int, int> > aa;
-	for(int i = 0; i < 15;++i)
-		aa.push_back(std::make_pair(i,rand() % 15));
-	a.orderBuild(aa,0,14);
-	std::cout << a;
+	std::vector<int> aa;
+	for(int i = 0; i < 3;++i)
+		aa.push_back(rand() % 15);
+	RMQ<int> b(aa);
+	//std::cout << a;
 	return 0;
 }
