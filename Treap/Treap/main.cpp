@@ -20,9 +20,13 @@ int main() {
 	a.unionWith(b);
 	std::cout << a;*/
 	std::vector<int> aa;
-	for(int i = 0; i < 3;++i)
+	for(int i = 0; i < 15;++i) {
 		aa.push_back(rand() % 15);
+		std::cout << aa[i] << " ";
+	}
 	RMQ<int> b(aa);
+	std::cout << std::endl << b.getMin(0,4).first << " " << b.getMin(0,4).second;
+	std::cout << std::endl << b.getMin(8,9).first << " " << b.getMin(8,9).second;
 	//std::cout << a;
 	return 0;
 }
