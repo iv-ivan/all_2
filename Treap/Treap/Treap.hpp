@@ -296,8 +296,8 @@ std::ostream& operator << (std::ostream& out, Treap<type_key, type_prior>& tr) {
 		for(int j = 0; j < 15; ++j)
 			a[i][j] = -100;
 	addNode(a, tr.root_);
-	for(int i = 0; i < 15; ++i) {
-		for(int j = 0; j < 15; ++j)
+	for(int i = 0; i < 100; ++i) {
+		for(int j = 0; j < 100; ++j)
 			if(a[i][j] != -100)
 				out << a[i][j];
 			else

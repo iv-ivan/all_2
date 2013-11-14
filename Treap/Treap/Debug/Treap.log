@@ -1,3 +1,3 @@
 ﻿  main.cpp
-c:\users\ivan290895\documents\visual studio 2012\projects\treap\treap\rmq.hpp(264): warning C4715: 'RMQ<int>::getMin' : not all control paths return a value
+c:\users\ivan290895\documents\visual studio 2012\projects\treap\treap\rmq.hpp(269): warning C4715: 'RMQ<int>::getMin' : not all control paths return a value
   Treap.vcxproj -> C:\Users\ivan290895\documents\visual studio 2012\Projects\Treap\Debug\Treap.exe

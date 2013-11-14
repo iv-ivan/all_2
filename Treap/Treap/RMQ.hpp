@@ -232,33 +232,38 @@ std::pair<int,type_val> RMQ<type_val>::getMin(int i, int j) {
 	if(block_i == block_j)
 		return farah_vector_[precalc_[mapping_to_standard_types_of_blocks[block_i]][first_pos_[i] - block_i*size_of_block_][first_pos_[j] - block_i*size_of_block_]+block_i*size_of_block_];
 	else {
-		std::pair<int,type_val> min1 = farah_vector_[precalc_[mapping_to_standard_types_of_blocks[block_i]][first_pos_[i] - block_i*size_of_block_][size_of_block_ - 1]+block_i*size_of_block_];
-		std::pair<int,type_val> min3 = farah_vector_[precalc_[mapping_to_standard_types_of_blocks[block_j]][0][first_pos_[j] - block_j*size_of_block_]+block_j*size_of_block_];
+		int ind1 = precalc_[mapping_to_standard_types_of_blocks[block_i]][first_pos_[i] - block_i*size_of_block_][size_of_block_ - 1]+block_i*size_of_block_;
+		int ind3 = precalc_[mapping_to_standard_types_of_blocks[block_j]][0][first_pos_[j] - block_j*size_of_block_]+block_j*size_of_block_;
+		//std::pair<int,type_val> min1 = farah_vector_[precalc_[mapping_to_standard_types_of_blocks[block_i]][first_pos_[i] - block_i*size_of_block_][size_of_block_ - 1]+block_i*size_of_block_];
+		//std::pair<int,type_val> min3 = farah_vector_[precalc_[mapping_to_standard_types_of_blocks[block_j]][0][first_pos_[j] - block_j*size_of_block_]+block_j*size_of_block_];
 		if(block_i + 1 < block_j) {
 			int power = int(ceil(log(block_j - 1 - block_i)));
 			int power_ = 1;
 			power_ <<= power;
-			std::pair<int,type_val> min2;
+			int ind2;
+			//std::pair<int,type_val> min2;
 			if(vector_min_blocks[sparse_table_[block_i+1][power]] < vector_min_blocks[sparse_table_[block_j-power_][power]]) {
 				int no_block = sparse_table_[block_i+1][power];
-				min2 = std::make_pair(no_block*size_of_block_ + precalc_[no_block][0][size_of_block_-1], vector_min_blocks[no_block]);
+				//min2 = farah_vector_[no_block*size_of_block_ + precalc_[mapping_to_standard_types_of_blocks[no_block]][0][size_of_block_-1]];
+				ind2 = no_block*size_of_block_ + precalc_[mapping_to_standard_types_of_blocks[no_block]][0][size_of_block_-1];
 			} else {
 				int no_block = sparse_table_[block_j-power_][power];
-				min2 = std::make_pair(no_block*size_of_block_ + precalc_[no_block][0][size_of_block_-1], vector_min_blocks[no_block]);
-			}
-			type_val min_from_3 = std::min(std::min(min1.second,min2.second),min3.second);
-			if(min1.second == min_from_3)
-				return min1;
-			if(min2.second == min_from_3)
-				return min2;
-			if(min3.second == min_from_3)
-				return min3;
+				//min2 = farah_vector_[no_block*size_of_block_ + precalc_[mapping_to_standard_types_of_blocks[no_block]][0][size_of_block_-1]];
+				ind2 = no_block*size_of_block_ + precalc_[mapping_to_standard_types_of_blocks[no_block]][0][size_of_block_-1];
+			}//-=-------------------!!!!!!!!!!!
+			int min_from_3 = std::min(std::min(depth_[ind1],depth_[ind2]),depth_[ind3]);
+			if(depth_[ind1] == min_from_3)
+				return farah_vector_[ind1];
+			if(depth_[ind2] == min_from_3)
+				return farah_vector_[ind2];
+			if(depth_[ind3] == min_from_3)
+				return farah_vector_[ind3];
 		} else {
-			type_val min_from_2 = std::min(min1.second,min3.second);
-			if(min1.second == min_from_2)
-				return min1;
-			if(min3.second == min_from_2)
-				return min3;
+			int min_from_2 = std::min(depth_[ind1],depth_[ind3]);
+			if(depth_[ind1] == min_from_2)
+				return farah_vector_[ind1];
+			if(depth_[ind3] == min_from_2)
+				return farah_vector_[ind3];
 		}
 	}
 }
