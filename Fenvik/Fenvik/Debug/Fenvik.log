@@ -1,0 +1,30 @@
+﻿  main.cpp
+c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\fenvik.hpp(18): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\fenvik.hpp(17) : while compiling class template member function 'void FenvikTree<T>::incr(int,const T &)'
+          with
+          [
+              T=int
+          ]
+          c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\fenvik.hpp(5) : see reference to function template instantiation 'void FenvikTree<T>::incr(int,const T &)' being compiled
+          with
+          [
+              T=int
+          ]
+          c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\fenvik.hpp(2) : while compiling class template member function 'FenvikTree<T>::FenvikTree(const std::vector<_Ty> &)'
+          with
+          [
+              T=int,
+              _Ty=int
+          ]
+          c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\main.cpp(11) : see reference to function template instantiation 'FenvikTree<T>::FenvikTree(const std::vector<_Ty> &)' being compiled
+          with
+          [
+              T=int,
+              _Ty=int
+          ]
+          c:\users\ivan290895\documents\visual studio 2012\projects\fenvik\fenvik\main.cpp(11) : see reference to class template instantiation 'FenvikTree<T>' being compiled
+          with
+          [
+              T=int
+          ]
+  Fenvik.vcxproj -> c:\users\ivan290895\documents\visual studio 2012\Projects\Fenvik\Debug\Fenvik.exe

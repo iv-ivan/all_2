@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fenvik", "Fenvik\Fenvik.vcxproj", "{71314133-C28F-4A1A-AC0F-281037F2EF13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71314133-C28F-4A1A-AC0F-281037F2EF13}.Debug|Win32.ActiveCfg = Debug|Win32
+		{71314133-C28F-4A1A-AC0F-281037F2EF13}.Debug|Win32.Build.0 = Debug|Win32
+		{71314133-C28F-4A1A-AC0F-281037F2EF13}.Release|Win32.ActiveCfg = Release|Win32
+		{71314133-C28F-4A1A-AC0F-281037F2EF13}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
