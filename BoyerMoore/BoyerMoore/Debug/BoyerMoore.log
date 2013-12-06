@@ -1,0 +1,8 @@
+﻿  BoyerMoore.cpp
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(10): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(17): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(21): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(24): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(38): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\boyermoore\boyermoore\boyermoore.cpp(40): warning C4018: '<' : signed/unsigned mismatch
+  BoyerMoore.vcxproj -> c:\users\ivan290895\documents\visual studio 2012\Projects\BoyerMoore\Debug\BoyerMoore.exe
