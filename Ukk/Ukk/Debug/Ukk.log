@@ -1,3 +1,8 @@
 ﻿  Ukk.cpp
-c:\users\ivan290895\documents\visual studio 2012\projects\ukk\ukk\ukk.cpp(133): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\ukk\ukk\ukk.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\ukk\ukk\ukk.cpp(82): warning C4018: '<' : signed/unsigned mismatch
+c:\users\ivan290895\documents\visual studio 2012\projects\ukk\ukk\ukk.cpp(199): warning C4018: '<' : signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
   Ukk.vcxproj -> C:\Users\ivan290895\documents\visual studio 2012\Projects\Ukk\Debug\Ukk.exe

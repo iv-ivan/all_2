@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <unordered_set>
+#include <list>
 
 using namespace std;
 
@@ -14,6 +16,7 @@ struct Node {
 			childs[i] = -1;
 		r = new int(10000000);
 	}
+	list<int> posLeaves;
 };
 
 struct SuffTree {
@@ -22,7 +25,11 @@ struct SuffTree {
 	int edgePos;//from curNode.l to curNode.r || -1 if no edges
 	unsigned int size;
 
+	int index;//char in text
+	vector<unsigned int> text;
+
 	void init(){
+		index = 0;
 		size = 2;
 		curNode = 0;
 		edgePos = 0;
@@ -35,7 +42,11 @@ struct SuffTree {
 		nodes[1].l = new int(-1);
 		nodes[1].r = new int(-1);
 	}
+	void addChar(unsigned int);
+	~SuffTree();
+	/*bool*/list<int> find(const string& a);
+	list<int> dfs(int curV,int prevL);
 };
 
 bool find(const SuffTree& tree, const string& str);
-vector<bool> Ukk(const vector<string>& needle, istream& in);
+/*vector<bool>*/vector<list<int> > Ukk(const vector<string>& needle, istream& in);
